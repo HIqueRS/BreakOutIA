@@ -22,6 +22,7 @@ public class RollerAgent : Agent
         { 
             target.GetComponent<Rigidbody2D>().angularVelocity = 0f;
             target.transform.localPosition = new Vector3(0, 2.5f, 0);
+            target.GetComponent<Bola>().time = 0f;
             target.GetComponent<Bola>().InitBall();
         }
 
@@ -56,13 +57,16 @@ public class RollerAgent : Agent
         {
             Debug.Log("Na sorte");
             SetReward(1.0f);
-            EndEpisode();
+            //EndEpisode();
         }
 
         // Fell off platform
         else if (target.transform.localPosition.y < -4)
         {
             Debug.Log("To passando aqui");
+            target.GetComponent<Rigidbody2D>().angularVelocity = 0f;
+            target.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            SetReward(-2.0f);
             EndEpisode();
         }
     }
