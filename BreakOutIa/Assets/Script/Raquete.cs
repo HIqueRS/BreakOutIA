@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Raquete : MonoBehaviour
 {
-
+    public float distance = 10f;
+    public GameObject boula;
     Vector3 dir;
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,8 @@ public class Raquete : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(distance = Vector2.Distance(this.transform.position, boula.transform.position));
+
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             dir = Vector2.left;

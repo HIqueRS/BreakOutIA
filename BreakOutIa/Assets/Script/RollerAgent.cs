@@ -8,62 +8,61 @@ using Unity.MLAgents.Actuators;
 
 public class RollerAgent : Agent
 {
-    Rigidbody rBody;
+    Rigidbody2D rBody;
     void Start()
     {
-        rBody = GetComponent<Rigidbody>();
+        rBody = GetComponent<Rigidbody2D>();
     }
 
-    public Transform Target;
+    public Transform target;
     public override void OnEpisodeBegin()
     {
-        // If the Agent fell, zero its momentum
-        if (this.transform.localPosition.y < 0)
-        {
-            this.rBody.angularVelocity = Vector3.zero;
-            this.rBody.velocity = Vector3.zero;
-            this.transform.localPosition = new Vector3(0, 0.5f, 0);
+       // If the ball fell, -4 (position plataorma) its momentum
+        if (target.transform.localPosition.y < -4)
+        { 
+            target.GetComponent<Rigidbody2D>().angularVelocity = 0f;
+            target.transform.localPosition = new Vector3(0, 2.5f, 0);
+            target.GetComponent<Bola>().InitBall();
         }
 
-        // Move the target to a new spot
-        Target.localPosition = new Vector3(Random.value * 8 - 4,
-                                           0.5f,
-                                           Random.value * 8 - 4);
+        this.transform.position = new Vector2(0f, -4f);
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
         // Target and Agent positions
-        sensor.AddObservation(Target.localPosition);
+        sensor.AddObservation(target.localPosition);
         sensor.AddObservation(this.transform.localPosition);
 
         // Agent velocity
         sensor.AddObservation(rBody.velocity.x);
-        sensor.AddObservation(rBody.velocity.z);
     }
 
-    public float forceMultiplier = 10;
+    public float forceMultiplier = 5;
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
-        // Actions, size = 2
-        Vector3 controlSignal = Vector3.zero;
+        // Actions, size = 2 DELETE
+        Vector2 controlSignal = Vector2.zero;
         controlSignal.x = actionBuffers.ContinuousActions[0];
-        controlSignal.z = actionBuffers.ContinuousActions[1];
+
         rBody.AddForce(controlSignal * forceMultiplier);
-        Debug.Log("Control signals: " + controlSignal.x.ToString() + " " + controlSignal.z.ToString());
+        Debug.Log("Control signals: " + controlSignal.x.ToString() + " ");
+
         // Rewards
-        float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
+        float distanceToTarget = Vector2.Distance(this.transform.localPosition, target.localPosition);
 
         // Reached target
-        if (distanceToTarget < 1.42f)
+        if (distanceToTarget < 0.5f)
         {
+            Debug.Log("Na sorte");
             SetReward(1.0f);
             EndEpisode();
         }
 
         // Fell off platform
-        else if (this.transform.localPosition.y < 0)
+        else if (target.transform.localPosition.y < -4)
         {
+            Debug.Log("To passando aqui");
             EndEpisode();
         }
     }
@@ -72,7 +71,6 @@ public class RollerAgent : Agent
     {
         var continuousActionsOut = actionsOut.ContinuousActions;
         continuousActionsOut[0] = Input.GetAxis("Horizontal");
-        continuousActionsOut[1] = Input.GetAxis("Vertical");
         Debug.Log("entrou");
     }
 
