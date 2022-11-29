@@ -31,7 +31,7 @@ public class Bola : MonoBehaviour
         }
     }
 
-    public void InitBall(float force = 300f)
+    public void InitBall(float force = 200)
     {
         angle = Random.Range(-60f, 60f);
 
