@@ -23,14 +23,13 @@ public class RollerAgent : Agent
     {
         bateu = false;
        // If the ball fell, -4 (position plataorma) its momentum
-        if (target.transform.localPosition.y < -5)
-        { 
-            target.GetComponent<Rigidbody2D>().angularVelocity = 0f;
-            target.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            target.transform.localPosition = new Vector3(0, 2.5f, 0);
-            target.GetComponent<Bola>().time = 0f;
-            target.GetComponent<Bola>().InitBall();
-        }
+
+        target.GetComponent<Rigidbody2D>().angularVelocity = 0f;
+        target.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        target.transform.localPosition = new Vector3(0, 2.5f, 0);
+        target.GetComponent<Bola>().time = 0f;
+        target.GetComponent<Bola>().InitBall();
+
 
         this.transform.localPosition = new Vector2(0f, -4f);
     }
@@ -63,21 +62,26 @@ public class RollerAgent : Agent
         // Rewards
         float distance = Vector3.Distance(new Vector3(this.transform.localPosition.x, 0f, 0f), new Vector3(target.localPosition.x, 0f, 0f));
 
-        if (distance > 0.3f || distance < -0.3f)
+        if (distance < 0.3f)
         {
-            SetReward(0.2f);
+            Debug.Log("To perto");
+            SetReward(0.1f);
+        } else if (distance > 0.3f)
+        {
+            Debug.Log("To longe");
+            SetReward(-0.05f);
         }
         // Reached target
         if (bateu)
         {
-            Debug.Log("Na sorte");
+            Debug.Log("Rebati");
             SetReward(1.0f);
             EndEpisode();
         }
         // Fell off platform
         else if (target.transform.localPosition.y < -5)
         {
-            Debug.Log("To passando aqui");
+            Debug.Log("Perdi");
             SetReward(-1.0f);
             EndEpisode();
         }
