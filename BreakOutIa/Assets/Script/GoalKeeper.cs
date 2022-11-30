@@ -6,8 +6,9 @@ using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 
-public class RollerAgent : Agent
+public class GoalKeeper : Agent
 {
+
     Rigidbody2D rBody;
     public bool bateu;
 
@@ -21,16 +22,6 @@ public class RollerAgent : Agent
     public override void OnEpisodeBegin()
     {
         bateu = false;
-       // If the ball fell, -4 (position plataorma) its momentum
-
-        target.GetComponent<Rigidbody2D>().angularVelocity = 0f;
-        target.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        target.transform.localPosition = new Vector3(0, 2.5f, 0);
-        target.GetComponent<Bola>().time = 0f;
-        target.GetComponent<Bola>().InitBall();
-
-
-        this.transform.localPosition = new Vector2(0f, -4f);
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -65,7 +56,8 @@ public class RollerAgent : Agent
         {
             Debug.Log("To perto");
             SetReward(0.1f);
-        } else if (distance > 0.3f)
+        }
+        else if (distance > 0.3f)
         {
             Debug.Log("To longe");
             SetReward(-0.05f);
@@ -88,7 +80,7 @@ public class RollerAgent : Agent
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.CompareTag("Bola"))
+        if (collision.transform.CompareTag("Bola"))
         {
             bateu = true;
         }
@@ -100,6 +92,4 @@ public class RollerAgent : Agent
         continuousActionsOut[0] = Input.GetAxis("Horizontal");
         Debug.Log("entrou");
     }
-
-
 }

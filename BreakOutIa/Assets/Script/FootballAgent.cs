@@ -6,7 +6,7 @@ using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 
-public class RollerAgent : Agent
+public class FootBallAgent : Agent
 {
     Rigidbody2D rBody;
     public bool bateu;
@@ -23,14 +23,14 @@ public class RollerAgent : Agent
         bateu = false;
        // If the ball fell, -4 (position plataorma) its momentum
 
-        target.GetComponent<Rigidbody2D>().angularVelocity = 0f;
-        target.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        target.transform.localPosition = new Vector3(0, 2.5f, 0);
-        target.GetComponent<Bola>().time = 0f;
+        //target.GetComponent<Rigidbody2D>().angularVelocity = 0f;
+        //target.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        //target.transform.localPosition = new Vector3(0, 2.5f, 0);
+        //target.GetComponent<Bola>().time = 0f;
         target.GetComponent<Bola>().InitBall();
 
 
-        this.transform.localPosition = new Vector2(0f, -4f);
+        //this.transform.localPosition = new Vector2(0f, -4f);
     }
 
     public override void CollectObservations(VectorSensor sensor)

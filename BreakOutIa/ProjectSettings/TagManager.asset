@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Bot
   - Bola
+  - GoleiraInter
+  - GoleiraGremio
+  - Parede
   layers:
   - Default
   - TransparentFX
