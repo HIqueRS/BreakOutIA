@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 88965190}
   - component: {fileID: 88965189}
   m_Layer: 0
-  m_Name: sfjfs
+  m_Name: MudaMuda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1034,7 +1034,7 @@ GameObject:
   - component: {fileID: 852554968}
   - component: {fileID: 852554967}
   m_Layer: 0
-  m_Name: sfjfs (1)
+  m_Name: MudaMuda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

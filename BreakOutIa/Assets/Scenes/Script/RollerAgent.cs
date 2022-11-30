@@ -42,7 +42,10 @@ public class RollerAgent : Agent
         // Agent velocity
         sensor.AddObservation(rBody.velocity.x);
         sensor.AddObservation(target.GetComponent<Rigidbody2D>().velocity);
-        sensor.AddObservation(target.transform.rotation);
+
+        float distance = Vector2.Distance(target.transform.position, this.transform.position);
+
+        sensor.AddObservation(distance);
 
     }
 
