@@ -19,11 +19,12 @@ public class Bola : MonoBehaviour
     public float time;
     public Transform middle;
 
-
+    public Vector2 posAntiga;
+    public Vector2 posAtual;
 
     #region TIMERS
-    bool inverteuVertical = false, inverteuHorizontal = false;
-
+    public float countX = 0;
+    public float countY = 0;
     #endregion
 
     // Start is called before the first frame update
@@ -34,12 +35,39 @@ public class Bola : MonoBehaviour
         InitBall();
         time = 0;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
+        posAtual = this.transform.position;
+
         Debug.Log(rgb2d.velocity);
         time += Time.deltaTime;
+
+        if (rgb2d.velocity.magnitude < 4f)
+        {
+            rgb2d.velocity = Vector2.zero;
+            Vector2 dir = posAtual - posAntiga;
+
+            dir = dir.normalized;
+            rgb2d.AddForce(dir * 241.01f);
+        }
+
+        if (posAtual.x == posAntiga.x)
+        {
+            countX += Time.deltaTime;
+        } 
+        if (posAtual.y == posAntiga.y)
+        {
+            countY += Time.deltaTime;
+        }
+
+        if (countX > 2f || countY > 2f)
+        {
+            ResetBall();
+        }
+
+        posAntiga = this.transform.position;
 
         //if (time > 5)
         //{
@@ -47,9 +75,9 @@ public class Bola : MonoBehaviour
         //}
     }
 
-    public void InitBall(float force = 240)
+    public void InitBall(float force = 241.1f)
     {
-        angle = Random.Range(50f, -50f);
+        angle = Random.Range(60f, -60f);
         //angle = 60;
         dir = new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad), 0);
 
@@ -65,6 +93,7 @@ public class Bola : MonoBehaviour
 
     private void ResetBall()
     {
+        countY = countX = 0f;
         rgb2d.velocity = Vector2.zero;
         this.transform.position = middle.transform.position;
         angle = 0.0f;
@@ -72,9 +101,6 @@ public class Bola : MonoBehaviour
 
         time = 0f;
         InitBall();
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

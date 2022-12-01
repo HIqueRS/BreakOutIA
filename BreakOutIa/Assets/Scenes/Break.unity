@@ -1073,12 +1073,20 @@ PrefabInstance:
       value: prefab
       objectReference: {fileID: 0}
     - target: {fileID: 6770419209253753374, guid: a2c69177c3742284b84b948f8e22a1cd, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770419209253753374, guid: a2c69177c3742284b84b948f8e22a1cd, type: 3}
       propertyPath: m_BehaviorType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6770419209253753374, guid: a2c69177c3742284b84b948f8e22a1cd, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770419209438261092, guid: a2c69177c3742284b84b948f8e22a1cd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.93
       objectReference: {fileID: 0}
     - target: {fileID: 7640516724150026544, guid: a2c69177c3742284b84b948f8e22a1cd, type: 3}
       propertyPath: m_RootOrder

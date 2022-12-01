@@ -36,6 +36,7 @@ Transform:
   - {fileID: 6770419208923062531}
   - {fileID: 6770419208149386207}
   - {fileID: 6770419209447419004}
+  - {fileID: 4321077782065967183}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -65,7 +66,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6770419208092113282}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.2, z: 0}
+  m_LocalPosition: {x: 0, y: -5.16, z: 0}
   m_LocalScale: {x: 7, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -287,7 +288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6770419208149386194}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 2.6, y: 4.8, z: 0}
+  m_LocalPosition: {x: 2.6, y: -4.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -508,7 +509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6770419208923062529}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -5.45, z: 0}
+  m_LocalPosition: {x: -0.06, y: 5.16, z: 0}
   m_LocalScale: {x: 7.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -598,7 +599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6770419209253753360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2096, y: -4, z: 0}
+  m_LocalPosition: {x: -0.01, y: 4, z: 0}
   m_LocalScale: {x: 1.16925, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -735,6 +736,9 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   bateu: 0
+  distanceX: 0
+  multiplicadorRebatida: 0
+  multiplicadorPerdida: 0
   target: {fileID: 6770419209438261092}
   forceMultiplier: 5
 --- !u!114 &6770419209253753374
@@ -759,9 +763,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: ebc10d6cb4c30544294e19fea127d21b, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 2
+  m_BehaviorType: 0
   m_BehaviorName: RollerBall
   TeamId: 0
   m_UseChildSensors: 1
@@ -896,8 +900,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a365bca35b388c941944ccec8b87313e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inter: {fileID: 0}
+  gremio: {fileID: 0}
+  golsInter: 0
+  golsGremio: 0
   rgb2d: {fileID: 6770419209438261095}
   time: 0
+  middle: {fileID: 4321077782065967183}
+  posAntiga: {x: 0, y: 0}
+  posAtual: {x: 0, y: 0}
+  countX: 0
+  countY: 0
 --- !u!50 &6770419209438261095
 Rigidbody2D:
   serializedVersion: 4
@@ -945,7 +958,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6770419209447418995}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -2.67, y: 4.8, z: 0}
+  m_LocalPosition: {x: -2.67, y: -4.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1030,3 +1043,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &7987465809429742773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4321077782065967183}
+  m_Layer: 0
+  m_Name: Meio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4321077782065967183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987465809429742773}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.08, y: -3.2, z: 0.054423783}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7640516724150026544}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
