@@ -44,22 +44,29 @@ public class Bola : MonoBehaviour
         Debug.Log(rgb2d.velocity);
         time += Time.deltaTime;
 
-        if (rgb2d.velocity.magnitude < 4f)
+        if (rgb2d.velocity.magnitude < 3.7)
         {
             rgb2d.velocity = Vector2.zero;
             Vector2 dir = posAtual - posAntiga;
 
             dir = dir.normalized;
-            rgb2d.AddForce(dir * 241.01f);
+            rgb2d.AddForce(dir * 200f);
         }
 
         if (posAtual.x == posAntiga.x)
         {
             countX += Time.deltaTime;
-        } 
+        }else
+        {
+            countX = 0f;
+        }
         if (posAtual.y == posAntiga.y)
         {
             countY += Time.deltaTime;
+        }
+        else
+        {
+            countY = 0f;
         }
 
         if (countX > 2f || countY > 2f)
@@ -75,7 +82,7 @@ public class Bola : MonoBehaviour
         //}
     }
 
-    public void InitBall(float force = 241.1f)
+    public void InitBall(float force = 200f)
     {
         angle = Random.Range(60f, -60f);
         //angle = 60;

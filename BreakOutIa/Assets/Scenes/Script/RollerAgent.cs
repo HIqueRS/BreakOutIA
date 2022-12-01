@@ -32,9 +32,10 @@ public class RollerAgent : Agent
             target.transform.localPosition = new Vector3(0, -3f, 0);
             target.GetComponent<Bola>().time = 0f;
             target.GetComponent<Bola>().InitBall();
+            this.transform.localPosition = new Vector2(0f, 4f);
         }
 
-        this.transform.localPosition = new Vector2(0f, 4f);
+ 
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -84,10 +85,11 @@ public class RollerAgent : Agent
             SetReward(1.0f + (0.1f * multiplicadorRebatida));
             multiplicadorRebatida++;
             multiplicadorPerdida = 0f;
+            bateu = false;
             EndEpisode();
         }
         // Fell off platform
-        else if (target.transform.localPosition.y > 5)
+        if (target.transform.localPosition.y > 5)
         {
             Debug.Log("Perdi");
             SetReward(-1.0f + (0.1f * multiplicadorPerdida));

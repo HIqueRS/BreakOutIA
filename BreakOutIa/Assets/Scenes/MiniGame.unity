@@ -716,6 +716,10 @@ MonoBehaviour:
   rgb2d: {fileID: 300006594}
   time: 0
   middle: {fileID: 1502319067}
+  posAntiga: {x: 0, y: 0}
+  posAtual: {x: 0, y: 0}
+  countX: 0
+  countY: 0
 --- !u!1 &447635508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,7 +1304,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: ebc10d6cb4c30544294e19fea127d21b, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 6e340b112d54e394cb6dc2bc0057e738, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 2
   m_BehaviorName: GoalKeeper

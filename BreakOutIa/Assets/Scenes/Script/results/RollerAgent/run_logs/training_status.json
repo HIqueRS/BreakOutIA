@@ -2,22 +2,22 @@
     "RollerBall": {
         "checkpoints": [
             {
-                "steps": 2072,
-                "file_path": "results\\RollerAgent\\RollerBall\\RollerBall-2072.onnx",
-                "reward": -0.31249991059303284,
-                "creation_time": 1669852105.9451694,
+                "steps": 968,
+                "file_path": "results\\RollerAgent\\RollerBall\\RollerBall-968.onnx",
+                "reward": null,
+                "creation_time": 1669853207.6342218,
                 "auxillary_file_paths": [
-                    "results\\RollerAgent\\RollerBall\\RollerBall-2072.pt"
+                    "results\\RollerAgent\\RollerBall\\RollerBall-968.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 2072,
+            "steps": 968,
             "file_path": "results\\RollerAgent\\RollerBall.onnx",
-            "reward": -0.31249991059303284,
-            "creation_time": 1669852105.9451694,
+            "reward": null,
+            "creation_time": 1669853207.6342218,
             "auxillary_file_paths": [
-                "results\\RollerAgent\\RollerBall\\RollerBall-2072.pt"
+                "results\\RollerAgent\\RollerBall\\RollerBall-968.pt"
             ]
         }
     },
